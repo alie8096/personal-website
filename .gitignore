@@ -1,0 +1,33 @@
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Local configuration file
+instance/
+
+# Log files
+*.log
+
+# Backup files
+*~
+
+# Compiled Python files
+*.pyc
+
+# macOS
+.DS_Store
+
+# Virtual environment
+venv/
+
+# IDE specific files
+.idea/
+.vscode/
+
+
+# Web map
+tree_map.txt
+
+# sample
+sample.py
