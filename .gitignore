@@ -29,5 +29,6 @@ venv/
 # Web map
 tree_map.txt
 
-# sample
+# sample & config
 sample.py
+config.py
