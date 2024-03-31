@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <h1>Welcome to Admin Panel</h1>
+    <p>Here you can manage your website.</p>
+    <ul>
+        <li><a href="{{ url_for('admin_posts') }}">View Posts</a></li>
+        <li><a href="{{ url_for('admin_post_new') }}">Create New Post</a></li> <!-- تغییر این خط -->
+        <!-- Add more links/buttons for other admin actions as needed -->
+    </ul>
+    <form action="{{ url_for('logout') }}" method="post">
+        <button type="submit">Logout</button>
+    </form>
+{% endblock %}

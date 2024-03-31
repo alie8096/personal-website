@@ -1,12 +1,12 @@
+from config import DATABASE_USERNAME, DATABASE_PASSWORD, DATABASE_HOST, DATABASE_NAME, SECRET_KEY
 from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
 
-
 app = Flask(__name__)
-app.config["SQLALCHEMY_DATABASE_URI"] = "sqlite:///site.db"
+app.config["SQLALCHEMY_DATABASE_URI"] = f"sqlite:///{DATABASE_NAME}"
+app.config["SECRET_KEY"] = SECRET_KEY
 db = SQLAlchemy(app)
 
-app.config.from_pyfile('../config.py')
 app.config['TEMPLATES_FOLDER'] = 'templates'
 
 from blog import routes

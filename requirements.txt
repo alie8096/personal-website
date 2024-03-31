@@ -8,5 +8,5 @@ Flask-Login
 Flask-Mail
 Flask-RESTful
 Flask-Cors
-
+python-dotenv
 PyGithub

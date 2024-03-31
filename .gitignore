@@ -25,9 +25,16 @@ venv/
 .idea/
 .vscode/
 
-
 # Web map
 tree_map.txt
 
 # sample 
 sample.py
+
+# config
+*.env
+
+
+# Temporarry override لغو موقت
+#  برا کلاس یوزر در امنیت بیشت برای قسمتی که کامنت شده اگر استفاده شد از گیت اگنور خارج میشه در غیر این صورت باید حذف شود
+utils.py
