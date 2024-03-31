@@ -1,7 +1,7 @@
-from sample import user
+from sample import super_user
 
-DATABASE_USERNAME = user["username"]
-DATABASE_PASSWORD = user["password"]
+DATABASE_USERNAME = super_user["username"]
+DATABASE_PASSWORD = super_user["password"]
 DATABASE_HOST = 'localhost'
 DATABASE_NAME = 'my_database'
 
