@@ -11,6 +11,7 @@
 <h1>ویرایش پروفایل</h1>
 
 <form method="post" action="{{ url_for('admin_profile') }}">
+    {{ form.hidden_tag() }}
     <input type="text" name="username" placeholder="نام کاربری" class="form-control" value="{{ current_user.username }}">
     <input type="email" name="email" placeholder="ایمیل" class="form-control" value="{{ current_user.email }}">
     <input type="password" name="password" placeholder="رمز عبور جدید" class="form-control">

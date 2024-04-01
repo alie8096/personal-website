@@ -2,4 +2,4 @@
 
 ## INCREASE SECURITY
 
-    - [ ] Increase security by the hash
+    - [x] Increase security by the hash

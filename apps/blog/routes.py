@@ -1,12 +1,11 @@
 from functools import wraps
+from werkzeug.security import generate_password_hash
 from flask_login import LoginManager, current_user, login_required, login_user, logout_user
 from flask import render_template, url_for, flash, redirect, request
 from blog.forms import CreatePostForm, LoginForm, EditProfileForm
 from blog.models import Post, User
 from sample import SUPER_USER
 from blog import app, db
-
-
 
 
 def create_user():
@@ -29,9 +28,6 @@ def create_user():
         db.session.commit()
         
         print(f"User created successfully!")
-
-# with app.app_context():
-    # create_user()
     
 
 @app.route("/")
@@ -55,16 +51,13 @@ def login():
     form = LoginForm()
     if form.validate_on_submit():
         user = User.query.filter_by(username=form.username.data).first()
-        if user and user.password == form.password.data:
+        if user and user.check_password(form.password.data):
             login_user(user, remember=form.remember_me.data)
             # user.is_admin = user.check_admin()
             # db.session.commit()
             flash("Login is successfully", "success")
-            print("Login is successfully", "success")
             return redirect(url_for("admin"))
-        flash("Login failed. Check username and/or password", "error")
-        print("Login failed. Check username and/or password", "error")
-        
+        flash("Login failed. Check username and/or password", "error")       
     return render_template("login.html", title="Login", form=form)
 
 
@@ -169,22 +162,22 @@ def admin_posts_create():
 @admin_required
 def admin_profile():
     user = User.query.get(current_user.id)
-
     if request.method == "POST":
         form = EditProfileForm(obj=user)
+        print(form.data)
         if form.validate_on_submit():
             user.username = form.username.data
             user.email = form.email.data
             user.password = form.password.data
             db.session.commit()
 
-            # TODO This file is only used when we are local
-            with open("../sample.py", "w") as f:
-                f.write(f"SUPER_USER = dataclass(\n")
-                f.write(f"    username=\"{user.username}\"", "\n")
-                f.write(f"    email=\"{user.email}\"", "\n")
-                f.write(f"    password=\"{user.password}\"", "\n")
-                f.write(f"    is_admin=True\n)")
+            # # TODO This file is only used when we are local
+            # with open("../sample.py", "w") as f:
+            #     f.write(f"SUPER_USER = dataclass(\n")
+            #     f.write(f"    username=\"{user.username}\"", "\n")
+            #     f.write(f"    email=\"{user.email}\"", "\n")
+            #     f.write(f"    password=\"{user.password}\"", "\n")
+            #     f.write(f"    is_admin=True\n)")
 
             flash("Profile updated successfully!", "success")
             # Avoid potential redirect loop: Redirect to a different route

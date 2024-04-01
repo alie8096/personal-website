@@ -11,9 +11,10 @@
 <h1>ورود</h1>
 
 <form method="post" action="{{ url_for('login') }}">
+    {{ form.hidden_tag() }}
     <input type="text" name="username" placeholder="نام کاربری" class="form-control">
     <input type="password" name="password" placeholder="رمز عبور" class="form-control">
+    <input type="checkbox" name="remember_me" placeholder="من را به باد آور" class="form-control">
     <button type="submit" class="btn btn-primary">ورود</button>
 </form>
-
 {% endblock %}
