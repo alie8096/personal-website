@@ -1,20 +1,19 @@
 {% extends "base.html" %}
+
+{% block title %}
+
+ورود
+
+{% endblock %}
+
 {% block content %}
-  <h2>Login</h2>
-  <form method="post">
-    {{ form.hidden_tag() }}
-    <div class="form-group">
-      {{ form.username.label(class="form-control-label") }}
-      {{ form.username(class="form-control") }}
-    </div>
-    <div class="form-group">
-      {{ form.password.label(class="form-control-label") }}
-      {{ form.password(class="form-control") }}
-    </div>
-    <div class="form-group form-check">
-      {{ form.remember_me(class="form-check-input") }}
-      {{ form.remember_me.label(class="form-check-label") }}
-    </div>
-    <button type="submit" class="btn btn-primary">Login</button>
-  </form>
+
+<h1>ورود</h1>
+
+<form method="post" action="{{ url_for('login') }}">
+    <input type="text" name="username" placeholder="نام کاربری" class="form-control">
+    <input type="password" name="password" placeholder="رمز عبور" class="form-control">
+    <button type="submit" class="btn btn-primary">ورود</button>
+</form>
+
 {% endblock %}

@@ -1,7 +1,7 @@
 from datetime import datetime
 from flask_wtf import FlaskForm
 from wtforms import StringField, TextAreaField, SubmitField, PasswordField, BooleanField,  SelectField, DateField
-from wtforms.validators import DataRequired
+from wtforms.validators import DataRequired, Email
 
 
 class LoginForm(FlaskForm):
@@ -17,3 +17,10 @@ class CreatePostForm(FlaskForm):
     status = SelectField("status", choices=[("draft", "Draft"), ("published", "Published"), ("archived", "Archived"), ("rejected", "Rejected")], validators=[DataRequired()])
     create_at = DateField("Create At", format=r"%Y-%m-%d", default=datetime.today, validators=[DataRequired()])
     submit = SubmitField("Create")
+    
+
+class EditProfileForm(FlaskForm):
+    username = StringField("Username", validators=[DataRequired()])
+    email = StringField("Email", validators=[DataRequired(), Email()])
+    password = PasswordField("Password", validators=[DataRequired()])
+    submit = SubmitField("Update Profile")

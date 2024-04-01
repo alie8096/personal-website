@@ -9,4 +9,5 @@ Flask-Mail
 Flask-RESTful
 Flask-Cors
 python-dotenv
+email_validator
 PyGithub

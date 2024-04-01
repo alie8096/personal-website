@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+
+{% block title %}
+
+{{ post.title }}
+
+{% endblock %}
+
+{% block content %}
+
+<h1>{{ post.title }}</h1>
+
+<p>{{ post.content }}</p>
+
+{% if current_user.is_admin %}
+
+<a href="{{ url_for('admin_post', id=post.id) }}">ویرایش پست</a>
+
+{% endif %}
+
+{% endblock %}

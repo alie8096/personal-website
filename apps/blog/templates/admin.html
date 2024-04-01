@@ -1,14 +1,56 @@
 {% extends "base.html" %}
 
+{% block title %}
+
+پنل ادمین
+
+{% endblock %}
+
 {% block content %}
-    <h1>Welcome to Admin Panel</h1>
-    <p>Here you can manage your website.</p>
-    <ul>
-        <li><a href="{{ url_for('admin_posts') }}">View Posts</a></li>
-        <li><a href="{{ url_for('admin_post_new') }}">Create New Post</a></li> <!-- تغییر این خط -->
-        <!-- Add more links/buttons for other admin actions as needed -->
-    </ul>
-    <form action="{{ url_for('logout') }}" method="post">
-        <button type="submit">Logout</button>
-    </form>
+
+<h1>پنل ادمین</h1>
+
+<ul class="nav nav-tabs">
+    <li class="nav-item">
+        <a class="nav-link active" href="{{ url_for('admin') }}">ادمین</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" href="{{ url_for('home') }}">خانه</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" href="{{ url_for('admin_profile') }}">پروفایل</a>
+    </li>
+</ul>
+
+{% if current_user.is_superuser %}
+
+<a href="{{ url_for('admin_posts_new') }}">ایجاد پست جدید</a>
+
+{% endif %}
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>عنوان</th>
+            <th>نویسنده</th>
+            <th>وضعیت</th>
+            <th>تاریخ انتشار</th>
+            <th>عملیات</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for post in posts %}
+        <tr>
+            <td>{{ post.title }}</td>
+            <td>{{ post.author.username }}</td>
+            <td>{{ post.status }}</td>
+            <td>{{ post.published_at }}</td>
+            <td>
+                <a href="{{ url_for('admin_post', id=post.id) }}">ویرایش</a>
+                <a href="{{ url_for('admin_post_delete', id=post.id) }}">حذف</a>
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+
 {% endblock %}

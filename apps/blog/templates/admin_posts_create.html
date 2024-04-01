@@ -1,26 +1,17 @@
 {% extends "base.html" %}
+
+{% block title %}
+
+پست جدید ایجاد شد
+
+{% endblock %}
+
 {% block content %}
-<div class="container">
-    <h1>Create New Post</h1>
-    <form method="POST" action="{{ url_for('admin_posts_create') }}">
-        {{ form.hidden_tag() }}
-        <div class="form-group">
-            {{ form.title.label(class="form-label") }}
-            {{ form.title(class="form-control") }}
-        </div>
-        <div class="form-group">
-            {{ form.content.label(class="form-label") }}
-            {{ form.content(class="form-control") }}
-        </div>
-        <div class="form-group">
-            {{ form.status.label(class="form-label") }}
-            {{ form.status(class="form-control") }}
-        </div>
-        <div class="form-group">
-            {{ form.created_at.label(class="form-label") }}
-            {{ form.created_at(class="form-control") }}
-        </div>
-        <button type="submit" class="btn btn-primary">Create</button>
-    </form>
-</div>
+
+<h1>پست جدید ایجاد شد</h1>
+
+<p>پست شما با موفقیت ایجاد شد.</p>
+
+<a href="{{ url_for('admin_posts') }}">بازگشت به لیست پست ها</a>
+
 {% endblock %}

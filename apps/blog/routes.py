@@ -1,7 +1,7 @@
 from functools import wraps
 from flask_login import LoginManager, current_user, login_required, login_user, logout_user
 from flask import render_template, url_for, flash, redirect, request
-from blog.forms import CreatePostForm, LoginForm
+from blog.forms import CreatePostForm, LoginForm, EditProfileForm
 from blog.models import Post, User
 from sample import SUPER_USER
 from blog import app, db
@@ -97,17 +97,52 @@ def admin_required(f):
         return f(*args, **kwargs)
     return decorated_function
 
+
+@app.route("/post/<int:id>")
+def post(id):
+    post = Post.query.get_or_404(id)
+    return render_template("post.html")
+
+
+@app.route("/admin/posts/<int:id>", methods=["GET", "POST"])
+@login_required
+@admin_required
+def admin_post(id):
+    post = Post.query.get_or_404(id)
+    
+    if request.method == "POST":
+        if "update" in request.form:
+            post.title = request.form["title"]
+            post.content = request.form["content"]
+            post.status = request.form["status"]
+            db.session.commit()
+            flash("Post updated successfully!", "success")
+        elif "delete" in request.form:
+            db.session.delete(post)
+            db.session.commit()
+            flash("Post deleted successfully!", "success")
+            return redirect(url_for("admin_posts"))
+        
+    return render_template("admin_post.html", post=post)
+
+
 @app.route("/admin/posts")
+@login_required
+@admin_required
 def admin_posts():
     posts = Post.query.all()
     return render_template("admin_posts.html", posts=posts)
 
+
 @app.route("/admin/posts/new")
-def admin_post_new():
-    return render_template("admin_posts_new.html")
+@login_required
+@admin_required
+def admin_posts_new():
+    form = CreatePostForm()
+    return render_template("admin_posts_new.html", form=form)
 
 
-@app.route("/admin/posts/create", methods=["GET", "POST"])
+@app.route("/admin/posts/create", methods=["POST"])
 @login_required
 @admin_required
 def admin_posts_create():
@@ -129,31 +164,35 @@ def admin_posts_create():
     return render_template("admin_posts_create.html", title="Create Post", form=form)
     
 
-@app.route("/admin/posts/<int:id>/edit")
-def admin_post_edit(id):
-    post = Post.query.get_or_404(id)
-    return render_template("admin_posts_edit.html")
+@app.route("/admin/profile", methods=["GET", "POST"])
+@login_required
+@admin_required
+def admin_profile():
+    user = User.query.get(current_user.id)
 
+    if request.method == "POST":
+        form = EditProfileForm(obj=user)
+        if form.validate_on_submit():
+            user.username = form.username.data
+            user.email = form.email.data
+            user.password = form.password.data
+            db.session.commit()
 
-@app.route("/admin/posts/<int:id>/update", methods=["POST"])
-def admin_posts_update(id):
-    post = Post.query.get_or_404(id)
-    
-    post.title = request.form["title"]
-    post.content = request.form["content"]
-    post.status = request.form["status"]
-    
-    # post.date_posted #TODO
-    
-    db.session.commit()
-    
-    return redirect(url_for("admin_posts"))
+            # TODO This file is only used when we are local
+            with open("../sample.py", "w") as f:
+                f.write(f"SUPER_USER = dataclass(\n")
+                f.write(f"    username=\"{user.username}\"", "\n")
+                f.write(f"    email=\"{user.email}\"", "\n")
+                f.write(f"    password=\"{user.password}\"", "\n")
+                f.write(f"    is_admin=True\n)")
 
+            flash("Profile updated successfully!", "success")
+            # Avoid potential redirect loop: Redirect to a different route
+            return redirect(url_for("admin"))  # Assuming a different route for admin dashboard
 
-@app.route("/admin/posts/<int:id>/delete")
-def admin_posts_delete(id):
-    post = Post.query.get_or_404(id)
-    db.session.delete(post)
-    db.session.commit()
-    
-    return redirect(url_for("admin_posts"))
+        # Render the template with the form if validation fails
+        return render_template("admin_profile.html", form=form)
+
+    # GET request: Render the template with the form
+    return render_template("admin_profile.html", form=EditProfileForm(obj=user))
+                

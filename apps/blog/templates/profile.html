@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<h1>پروفایل</h1>
+
+<p>نام کاربری: {{ current_user.username }}</p>
+<p>ایمیل: {{ current_user.email }}</p>
+
+<a href="{{ url_for('edit_profile') }}">ویرایش پروفایل</a>
+
+{% endblock %}

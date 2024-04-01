@@ -1,27 +1,50 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fa">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{% block title %}{% endblock %}</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='styles/main.css') }}">
+    <title>{{ title }}</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" integrity="sha384-0evYQmZNgvR6emfH+876Ye1T+y51pbuJw+ZHqF83YIG/i+d6S09mFe37pUa2z6Lb" crossorigin="anonymous">
 </head>
 <body>
-    <header>
-        <nav>
-            <ul>
-                <li><a href="{{ url_for('home') }}">Home</a></li>
-                <!-- Add more navigation links here -->
-            </ul>
-        </nav>
-    </header>
-    
-    <main>
-        {% block content %}{% endblock %}
-    </main>
 
-    <footer>
-        <!-- Add footer content here -->
-    </footer>
+<header>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#">{{ site_name }}</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    {% for item in nav_items %}
+                    <li class="nav-item">
+                        <a class="nav-link {% if item.active %}active{% endif %}" href="{{ item.url }}">{{ item.text }}</a>
+                    </li>
+                    {% endfor %}
+                </ul>
+            </div>
+        </div>
+    </nav>
+</header>
+
+<main class="container mt-5">
+
+{% block content %}
+
+<h1>عنوان</h1>
+
+<p>محتوای صفحه</p>
+
+{% endblock %}
+
+</main>
+
+<footer class="bg-light text-center mt-5">
+    <p>تمامی حقوق محفوظ است.</p>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/NKXW183UZHchg6en6p869f49DGfR9H4Q7T1cQ" crossorigin="anonymous"></script>
+
 </body>
 </html>
+
