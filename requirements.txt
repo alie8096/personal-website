@@ -10,4 +10,4 @@ Flask-RESTful
 Flask-Cors
 python-dotenv
 email_validator
-PyGithub
+wtforms_sqlalchemy

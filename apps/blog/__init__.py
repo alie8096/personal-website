@@ -6,7 +6,7 @@ app = Flask(__name__)
 app.config["SQLALCHEMY_DATABASE_URI"] = f"sqlite:///{DATABASE_NAME}"
 app.config["SECRET_KEY"] = SECRET_KEY
 db = SQLAlchemy(app)
-CSRF_ENABLED
+app.config['CSRF_ENABLED'] = CSRF_ENABLED
 
 app.config['TEMPLATES_FOLDER'] = 'templates'
 

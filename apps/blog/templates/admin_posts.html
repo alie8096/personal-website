@@ -1,39 +1,33 @@
 {% extends "base.html" %}
-
-{% block title %}
-
-مدیریت پست ها
-
-{% endblock %}
-
 {% block content %}
-
-<h1>مدیریت پست ها</h1>
-
-<a href="{{ url_for('admin_posts_new') }}" class="btn btn-primary">ایجاد پست جدید</a>
-
-<table class="table">
+  <h1>All Posts</h1>
+  <table class="table">
     <thead>
-        <tr>
-            <th>عنوان</th>
-            <th>دسته بندی</th>
-            <th>تاریخ انتشار</th>
-            <th>عملیات</th>
-        </tr>
+      <tr>
+        <th>Title</th>
+        <th>Date Posted</th>
+        <th>Author</th>
+        <th>Status</th>
+        <th>Actions</th>
+      </tr>
     </thead>
     <tbody>
-        {% for post in posts %}
+      {% for post in posts %}
         <tr>
-            <td>{{ post.title }}</td>
-            <td>{{ post.category.name }}</td>
-            <td>{{ post.published_at }}</td>
-            <td>
-                <a href="{{ url_for('admin_posts_edit', post_id=post.id) }}" class="btn btn-sm btn-info">ویرایش</a>
-                <a href="{{ url_for('admin_posts_delete', post_id=post.id) }}" class="btn btn-sm btn-danger">حذف</a>
-            </td>
+          <td>{{ post.title }}</td>
+          <td>{{ post.date_posted.strftime("%Y-%m-%d %H:%M:%S") }}</td>
+          <td>{{ post.author.username }}</td>
+          <td>{{ post.status }}</td>
+          <td>
+            <a href="{{ url_for('admin_post', id=post.id) }}" class="btn btn-primary">Edit</a>
+            <form method="POST" action="{{ url_for('admin_post', id=post.id) }}" style="display:inline;">
+              <input type="hidden" name="_method" value="DELETE">
+              <button type="submit" class="btn btn-danger">Delete</button>
+            </form>
+          </td>
         </tr>
-        {% endfor %}
+      {% endfor %}
     </tbody>
-</table>
-
+  </table>
 {% endblock %}
+

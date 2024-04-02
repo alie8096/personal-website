@@ -1,0 +1,42 @@
+{% if post is defined %}
+
+<form method="POST" action="{{ url_for('admin_post', id=post.id) }}"> {{ form.hidden_tag() }}
+  <input type="hidden" name="_method" value="PUT">
+  <div class="mb-3">
+    <label for="title" class="form-label">عنوان</label>
+    <input type="text" name="title" class="form-control" id="title" value="{{ post.title }}">
+  </div>
+  <div class="mb-3">
+    <label for="content" class="form-label">محتوا</label>
+    <textarea name="content" class="form-control" id="content">{{ post.content }}</textarea>
+  </div>
+  <div class="mb-3">
+    <label for="status" class="form-label">وضعیت</label>
+    <select name="status" class="form-control" id="status">
+      <option value="draft">پیش نویس</option>
+      <option value="published">منتشر شده</option>
+      <option value="archived">آرشیو شده</option>
+      <option value="rejected">رد شده</option>
+    </select>
+  </div>
+  <div class="mb-3">
+    <label for="category" class="form-label">دسته</label>
+    <select name="category" class="form-control" id="category">
+      {% for category in categories %}
+        <option value="{{ category.id }}" {% if post.category and post.category.id == category.id %}selected{% endif %}>{{ category.name }}</option>
+      {% endfor %}
+    </select>
+  </div>
+  <button type="submit" class="btn btn-primary">ویرایش</button>
+</form>
+
+<!-- فرم حذف پست -->
+<form method="POST" action="{{ url_for('admin_post', id=post.id) }}">
+  <input type="hidden" name="_method" value="DELETE">
+  <button type="submit" class="btn btn-danger">حذف پست</button>
+</form>
+
+{% else %}
+  <p>پستی با شناسه {{ id }} یافت نشد.</p>
+{% endif %} 
+

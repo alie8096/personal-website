@@ -8,18 +8,51 @@
 
 {% block content %}
 
-<h1>ایجاد پست جدید</h1>
+<h2>لیست پست ها</h2>
+
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th>عنوان</th>
+      <th>دسته بندی</th>
+      <th>وضعیت</th>
+      <th>تاریخ انتشار</th>
+      <th>ویرایش</th>
+      <th>حذف</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for post in posts %}
+      <tr>
+        <td>{{ post.title }}</td>
+        <td>{{ post.category.name }}</td>  # Display category name
+        <td>{{ post.status }}</td>
+        <td>{{ post.date_posted }}</td>
+        <!-- <td><a href="{{ url_for('admin_posts', id=post.id, action='delete') }}">حذف</a></td> -->
+        <!-- <td><a href="{{ url_for('admin_posts', id=post.id, action='edit') }}">ویرایش</a></td> -->
+      </tr>
+    {% endfor %}
+  </tbody>
+</table>
+
+<h2>ایجاد پست جدید</h2>
 
 <form method="post" action="{{ url_for('admin_posts_create') }}">
-    <input type="text" name="title" placeholder="عنوان" class="form-control">
-    <textarea name="content" placeholder="محتوا" class="form-control"></textarea>
+    {{ form.hidden_tag() }}
+    <input type="text" name="title" placeholder="عنوان" class="form-control"><br>
+    <textarea name="content" placeholder="محتوا" class="form-control"></textarea><br>
     <select name="status" class="form-control">
         <option value="draft">پیش نویس</option>
         <option value="archived">بایگانی شد</option>
         <option value="published">منتشر شده</option>
         <option value="rejected">رد شده</option>
         
-    </select>
+    </select><br>
+    <select name="category" class="form-control">
+        {% for category in categories %}
+            <option value="{{ category.id }}">{{ category.name }}</option>
+        {% endfor %}
+    </select><br>
     <button type="submit" class="btn btn-primary">ایجاد پست</button>
 </form>
 
