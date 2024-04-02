@@ -27,17 +27,6 @@ class CreatePostForm(FlaskForm):
         self.category.choices = [(category.id, category.name) for category in Category.query.all()]
     
     
-# class CreatePostForm(FlaskForm):
-#     title = StringField("Title", validators=[DataRequired()])
-#     content = TextAreaField("Content", validators=[DataRequired()])
-#     status = SelectField("Status", choices=[("draft", "Draft"), ("published", "Published"), ("archived", "Archived"), ("rejected", "Rejected")], validators=[DataRequired()])
-#     create_at = DateField("Create At", format=r"%Y-%m-%d", default=datetime.today, validators=[DataRequired()])
-#     category = SelectField("Category", choices=[], validators=[DataRequired()])
-#     submit = SubmitField("Create Post")
-
-#     def __init__(self, categories, *args, **kwargs):
-#         super(CreateNewPostForm, self).__init__(*args, **kwargs)
-#         self.category.choices = [(category.id, category.name) for category in categories]
 class EditNewPostForm(FlaskForm):
     title = StringField("Title", validators=[DataRequired()])
     content = TextAreaField("Content", validators=[DataRequired()])

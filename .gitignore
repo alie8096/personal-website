@@ -36,5 +36,6 @@ sample.py
 
 
 # Temporarry override لغو موقت
-#  برا کلاس یوزر در امنیت بیشت برای قسمتی که کامنت شده اگر استفاده شد از گیت اگنور خارج میشه در غیر این صورت باید حذف شود
+md_to_html.py
 utils.py
+test_github_data.html

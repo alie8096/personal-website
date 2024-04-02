@@ -2,20 +2,49 @@
 
 {% block title %}
 
-خانه
+Home
 
 {% endblock %}
 
 {% block content %}
 
-<h1>خانه</h1>
+<div class="container-home">
+    <!-- Personal Describtion -->
+    <div class="personal-description">
+        <div class="description-content">
+            <div class="profile">                
+                <h1>Ali Ebrahimian</h1>
+                
+                <h3>Biomedical Engineering</h3>
+                
+                <p>I am a dedicated student of biomedical engineering, driven by a profound curiosity for the intersection of technology and the life sciences. With a fervent enthusiasm for innovation, I am deeply engaged in exploring the transformative potential of cutting-edge advancements in both computer science and biology.</p>
+            </div>
+            <div class="button-see-description">
+                <!-- TODO Link to the about me page -->
+                <a href="#" class="button"><span class="text-button">See more ...</span></a>
+            </div>
+                <div class="icon-social">
+                <a href="https://github.com/alie8096"><i class="fa-brands fa-github"></i></a>
+                <a href="https://instagram.com/ali.e.8096"><i class="fa-brands fa-instagram"></i></a>
+                <a href="http://t.me/ali_e_8096"><i class="fa-brands fa-telegram"></i></a>
 
-<p>خوش آمدید!</p>
-
-<ul>
-    {% for post in posts %}
-    <li><a href="{{ url_for('post', id=post.id) }}">{{ post.title }}</a></li>
-    {% endfor %}
-</ul>
-
-{% endblock %}
+            </div>
+        </div>
+        <div class="image-profile">
+            <img src="../static/images/img_profile.jpg" alt="">
+        </div>
+    </div>
+    <div class="categories-project-home">
+        <h3></h3>
+    </div>
+    <!-- Projects -->
+    <div class="projects">
+        <ul>
+            {% for post in posts %}
+            <li><a href="{{ url_for('post', id=post.id) }}">{{ post.title }}</a></li>
+            {% endfor %}
+        </ul>
+    </div>
+    
+</div>
+    {% endblock %}

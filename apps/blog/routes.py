@@ -1,8 +1,8 @@
 from flask_login import LoginManager, current_user, login_required, login_user, logout_user
-from flask import render_template, url_for, flash, redirect, request
 from blog.forms import EditNewPostForm, LoginForm, EditProfileForm, CreatePostForm
-from blog.models import Category
+from flask import render_template, url_for, flash, redirect, request
 from blog.models import Post, User
+from blog.models import Category
 from sample import SUPER_USER
 from functools import wraps
 from blog import app, db
@@ -53,8 +53,6 @@ def login():
         user = User.query.filter_by(username=form.username.data).first()
         if user and user.check_password(form.password.data):
             login_user(user, remember=form.remember_me.data)
-            # user.is_admin = user.check_admin()
-            # db.session.commit()
             flash("Login is successfully", "success")
             return redirect(url_for("admin"))
         flash("Login failed. Check username and/or password", "error")       
@@ -91,12 +89,6 @@ def admin_required(f):
     return decorated_function
 
 
-# @app.route("/post/<int:id>")
-# def post(id):
-#     post = Post.query.get_or_404(id)
-#     return render_template("post.html", post=post)
-
-
 @app.route("/post/<int:id>")  # Public post view route
 def post(id):
     post = Post.query.get_or_404(id)
@@ -106,38 +98,6 @@ def post(id):
 
     return render_template("post.html", post=post)
 
-# @app.route("/admin/post/<int:id>", methods=["GET", "POST", "DELETE"])
-# @login_required
-# @admin_required
-# def admin_post(id):
-#     post = Post.query.get_or_404(id)
-#     if post is None:
-#         flash("Post not found!", "danger")
-#         return redirect(url_for("admin_posts"))  # Redirect if post not found
-#     categories = [category for category in Category.query.all()]
-#     form = EditNewPostForm(obj=post, categories=categories)  # Pre-populate for editing
-
-#     if request.method == "POST":  # Handle Edit
-#         if form.validate_on_submit():  # Validate form
-#             print(post)
-#             if form.errors:  # Check for errors
-#                 flash("Form errors!", "danger")
-#             else:  # No errors, update post
-#                 post.title = form.title.data
-#                 post.content = form.content.data
-#                 post.status = form.status.data
-#                 # Update other fields if needed (e.g., category)
-#                 db.session.commit()
-#                 flash("Post updated successfully!", "success")
-#                 return redirect(url_for("admin_posts"))  # Redirect after update
-
-#     elif request.method == "DELETE":  # Handle Delete
-#         db.session.delete(post)
-#         db.session.commit()
-#         flash("Post deleted successfully!", "success")
-#         return redirect(url_for("admin_posts")) 
-
-#     return render_template("admin_post.html", title="Edit/Delete Post", post=post, form=form, categories=Category.query.all())
 
 @app.route("/admin/post/<int:id>", methods=["GET", "POST", "DELETE"])
 @login_required
@@ -228,3 +188,4 @@ def admin_profile():
             return redirect(url_for("admin"))
         return render_template("admin_profile.html", form=form)
     return render_template("admin_profile.html", form=EditProfileForm(obj=user))
+

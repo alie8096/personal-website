@@ -1,0 +1,97 @@
+@import url('https://fonts.googleapis.com/css2?family=Lalezar&family=Noto+Naskh+Arabic:wght@400..700&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+
+* {
+    box-sizing: border-box;
+}
+
+:root {
+    --primary-color: #187bcd;
+    --secondary-color: #d654d6;
+    --accent-color: #22a836;
+}
+body {
+    font-family: "Noto Naskh Arabic", serif;
+    font-optical-sizing: auto;
+    font-style: normal;
+    margin: 2%;
+    padding: 0;
+    color: aliceblue;
+    background-color: #1d1d1d;
+    align-items: center;
+    justify-content: center;
+    
+}
+
+a {
+    color: #187bcd;
+}
+
+a:hover {
+    color: #0e5a8a;   
+}
+
+.button {
+    background-color: #08a110;
+    padding: 10px 40px;
+    text-decoration: none;
+    border-radius: 15px;
+    transition: background-color 0.3s ease;
+  }
+  
+  .button:hover {
+    background-color: #22a836;
+  }
+
+  .text-button {
+    color: #fff;
+  }
+/* -------------- Home ------------------ */
+.container-home {
+    align-items: center;
+    justify-content: center;
+}
+
+.personal-description {
+    display:flex;
+    margin: 2%;
+    padding: 1%;
+    overflow-y: auto;
+}
+
+
+.description-content {
+    flex: 1;
+    padding: 2%;
+}
+
+.image-profile {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex: 1;
+    padding: 20px;
+    
+}
+
+.image-profile img {
+    max-width: 100%;
+    border-radius: 50%;
+    /* height: auto; */
+    max-height: 400px;
+    margin: auto;
+    margin-top: 20px;
+    
+}
+
+.icon-social {
+    margin: 15px 20px 15px 0;
+    font-size: 30px;
+}
+
+.icon-social a {
+    padding: 10px;
+}
+.button-see-description {
+    margin-top: 60px;
+    margin-bottom: 30px;
+}
