@@ -33,8 +33,9 @@ def create_user():
 @app.route("/")
 @app.route("/home")
 def home():
-    posts = Post.query.all()
-    return render_template("home.html", posts=posts)
+    last_three_posts = Post.query.order_by(Post.date_posted.desc()).limit(3).all()
+    return render_template("home.html", posts=last_three_posts)
+
 
 login_manager = LoginManager()
 login_manager.init_app(app)
@@ -72,12 +73,6 @@ def profile():
     return render_template("profile.html", title="Profile")
 
 
-@app.route("/admin")
-def admin():
-    if current_user.is_admin:
-        return render_template("admin.html")
-    else:
-        return redirect(url_for("home"))
 
 def admin_required(f):
     @login_required
@@ -89,13 +84,27 @@ def admin_required(f):
     return decorated_function
 
 
+@app.route("/admin")
+def admin():
+    if current_user.is_admin:
+        return render_template("admin.html")
+    else:
+        return redirect(url_for("home"))
+    
+@app.route("/admin-panel")
+@login_required
+@admin_required
+def admin_panel():
+    return render_template("admin_panel.html")
+
+    
 @app.route("/post/<int:id>")  # Public post view route
 def post(id):
     post = Post.query.get_or_404(id)
     if post is None:
         flash("Post not found!", "danger")
         return redirect(url_for("home"))  # Redirect to homepage if post not found
-
+    
     return render_template("post.html", post=post)
 
 

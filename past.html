@@ -1,0 +1,168 @@
+{% extends "base.html" %}
+
+{% block title %}
+
+Home
+
+{% endblock %}
+
+{% block content %}
+
+
+!-- <div class="container-home"> -->
+    <!-- Personal Describtion -->
+    <div class="personal-description">
+        <div class="description-content">
+            <div class="profile">                
+                <h1>Ali Ebrahimian</h1>
+                
+                <h3>Biomedical Engineering</h3>
+                
+                <p>I am a dedicated student of biomedical engineering, driven by a profound curiosity for the intersection of technology and the life sciences. With a fervent enthusiasm for innovation, I am deeply engaged in exploring the transformative potential of cutting-edge advancements in both computer science and biology.</p>
+            </div>
+            <div class="button-see-description"> -->
+                <!-- TODO Link to the about me page -->
+                <!-- <a href="#" class="button"><span class="text-button">See more ...</span></a>
+            </div>
+                <div class="icon-social">
+                <a href="https://github.com/alie8096"><i class="fa-brands fa-github"></i></a>
+                <a href="https://instagram.com/ali.e.8096"><i class="fa-brands fa-instagram"></i></a>
+                <a href="http://t.me/ali_e_8096"><i class="fa-brands fa-telegram"></i></a>
+
+            </div>
+        </div>
+        <div class="image-profile">
+            <img src="../static/images/img_profile.jpg" alt="">
+        </div>
+    </div>
+    <div class="categories-project-home">
+        <h3>Activity Topics</h3>
+        <div class="container-topics">
+
+        </div>
+
+    </div>
+    <!-- Projects -->
+    <div class="projects">
+        <ul>
+            {% for post in posts %}
+            <li><a href="{{ url_for('post', id=post.id) }}">{{ post.title }}</a></li>
+            {% endfor %}
+        </ul>
+    </div>
+    
+</div>
+    {% endblock %}
+
+
+
+
+
+
+
+    @import url('https://fonts.googleapis.com/css2?family=Lalezar&family=Noto+Naskh+Arabic:wght@400..700&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+
+    * {
+        box-sizing: border-box;
+    }
+    
+    :root {
+        --primary-color: #187bcd;
+        --secondary-color: #d654d6;
+        --accent-color: #22a836;
+    }
+    body {
+        font-family: "Noto Naskh Arabic", serif;
+        font-optical-sizing: auto;
+        font-style: normal;
+        margin: 2%;
+        padding: 0;
+        color: aliceblue;
+        background-color: #1d1d1d;
+        align-items: center;
+        justify-content: center;
+        
+    }
+    
+    a {
+        color: #187bcd;
+    }
+    
+    a:hover {
+        color: #0e5a8a;   
+    }
+    
+    .button {
+        background-color: #08a110;
+        padding: 10px 40px;
+        text-decoration: none;
+        border-radius: 15px;
+        transition: background-color 0.3s ease;
+      }
+      
+      .button:hover {
+        background-color: #22a836;
+      }
+    
+      .text-button {
+        color: #fff;
+      }
+    /* -------------- Home ------------------ */
+    .container-home {
+        align-items: center;
+        justify-content: center;
+    }
+    
+    .personal-description {
+        display:flex;
+        margin: 2%;
+        padding: 1%;
+        overflow-y: auto;
+    }
+    
+    
+    .description-content {
+        flex: 1;
+        padding: 2%;
+    }
+    
+    .image-profile {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex: 1;
+        padding: 20px;
+        
+    }
+    
+    .image-profile img {
+        max-width: 100%;
+        border-radius: 50%;
+        /* height: auto; */
+        max-height: 400px;
+        margin: auto;
+        margin-top: 20px;
+        
+    }
+    
+    .icon-social {
+        margin: 15px 20px 15px 0;
+        font-size: 30px;
+    }
+    
+    .icon-social a {
+        padding: 10px;
+    }
+    .button-see-description {
+        margin-top: 60px;
+        margin-bottom: 30px;
+    }
+    
+    /* --------------------------Home/Activity-Topics---------------------------- */
+    .container-topics {
+        display: flex;
+        border: 1px rgb(136, 136, 136, 0.3);
+        border-radius: 15px;
+    }
+    
+    

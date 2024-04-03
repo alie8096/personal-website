@@ -8,43 +8,56 @@ Home
 
 {% block content %}
 
-<div class="container-home">
-    <!-- Personal Describtion -->
-    <div class="personal-description">
-        <div class="description-content">
-            <div class="profile">                
-                <h1>Ali Ebrahimian</h1>
-                
-                <h3>Biomedical Engineering</h3>
-                
-                <p>I am a dedicated student of biomedical engineering, driven by a profound curiosity for the intersection of technology and the life sciences. With a fervent enthusiasm for innovation, I am deeply engaged in exploring the transformative potential of cutting-edge advancements in both computer science and biology.</p>
-            </div>
-            <div class="button-see-description">
-                <!-- TODO Link to the about me page -->
-                <a href="#" class="button"><span class="text-button">See more ...</span></a>
-            </div>
-                <div class="icon-social">
-                <a href="https://github.com/alie8096"><i class="fa-brands fa-github"></i></a>
-                <a href="https://instagram.com/ali.e.8096"><i class="fa-brands fa-instagram"></i></a>
-                <a href="http://t.me/ali_e_8096"><i class="fa-brands fa-telegram"></i></a>
+    <div class="container-home">
+        <div class="personal-description">
+            <div class="description-content">
+                <div class="profile">                
+                    <h1>Ali Ebrahimian</h1>
+                    
+                    <h3>Biomedical Engineering</h3>
+                    
+                    <p>I am a dedicated student of biomedical engineering, driven by a profound curiosity for the intersection of technology and the life sciences. With a fervent enthusiasm for innovation, I am deeply engaged in exploring the transformative potential of cutting-edge advancements in both computer science and biology.</p>
+                </div>
+                <div class="button-see-description">
+                    <a href="#" class="button"><span class="text-button">See more ...</span></a>
+                </div>
+                    <div class="icon-social">
+                    <a href="https://github.com/alie8096"><i class="fa-brands fa-github"></i></a>
+                    <a href="https://instagram.com/ali.e.8096"><i class="fa-brands fa-instagram"></i></a>
+                    <a href="http://t.me/ali_e_8096"><i class="fa-brands fa-telegram"></i></a>
 
+                </div>
+            </div>
+            <div class="image-profile">
+                <img src="../static/images/img_profile.jpg" alt="">
             </div>
         </div>
-        <div class="image-profile">
-            <img src="../static/images/img_profile.jpg" alt="">
+
+        <div class="categories-project-home">
+            <h3>Categories of Projects</h3>
+            <div class="container-topics">
+                <div class="category-item">
+                    <h4>Technology</h4>
+                    </div>
+                <div class="category-item">
+                    <h4>University</h4>
+                    </div>
+                </div>
         </div>
+
+        <div class="trusted-by">
+            <h3>Trusted By</h3>
+            <img src="path/to/logo1.png" alt="Logo 1">
+            <img src="path/to/logo2.png" alt="Logo 2">
+            </div>
+
+            <div class="projects">
+                <ul>
+                    {% for post in posts %}
+                    <li><a href="{{ url_for('post', id=post.id) }}">{{ post.title }}</a></li>
+                    {% endfor %}
+                </ul>
+            </div>
+        
     </div>
-    <div class="categories-project-home">
-        <h3></h3>
-    </div>
-    <!-- Projects -->
-    <div class="projects">
-        <ul>
-            {% for post in posts %}
-            <li><a href="{{ url_for('post', id=post.id) }}">{{ post.title }}</a></li>
-            {% endfor %}
-        </ul>
-    </div>
-    
-</div>
-    {% endblock %}
+{% endblock %}

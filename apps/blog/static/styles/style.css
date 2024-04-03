@@ -5,10 +5,11 @@
 }
 
 :root {
-    --primary-color: #187bcd;
+    --primary-color: #187bcd; /* Adjust as needed */
     --secondary-color: #d654d6;
     --accent-color: #22a836;
 }
+
 body {
     font-family: "Noto Naskh Arabic", serif;
     font-optical-sizing: auto;
@@ -19,7 +20,6 @@ body {
     background-color: #1d1d1d;
     align-items: center;
     justify-content: center;
-    
 }
 
 a {
@@ -36,15 +36,16 @@ a:hover {
     text-decoration: none;
     border-radius: 15px;
     transition: background-color 0.3s ease;
-  }
-  
-  .button:hover {
-    background-color: #22a836;
-  }
+}
 
-  .text-button {
+.button:hover {
+    background-color: #22a836;
+}
+
+.text-button {
     color: #fff;
-  }
+}
+
 /* -------------- Home ------------------ */
 .container-home {
     align-items: center;
@@ -52,12 +53,11 @@ a:hover {
 }
 
 .personal-description {
-    display:flex;
+    display: flex;
     margin: 2%;
     padding: 1%;
     overflow-y: auto;
 }
-
 
 .description-content {
     flex: 1;
@@ -70,7 +70,6 @@ a:hover {
     justify-content: center;
     flex: 1;
     padding: 20px;
-    
 }
 
 .image-profile img {
@@ -80,7 +79,6 @@ a:hover {
     max-height: 400px;
     margin: auto;
     margin-top: 20px;
-    
 }
 
 .icon-social {
@@ -91,7 +89,143 @@ a:hover {
 .icon-social a {
     padding: 10px;
 }
+
 .button-see-description {
     margin-top: 60px;
     margin-bottom: 30px;
+}
+
+/* -------------------------- Home/Activity-Topics---------------------------- */
+.container-topics {
+    display: flex;
+    border: 1px rgb(136, 136, 136, 0.3);
+    border-radius: 15px;
+}
+
+/* New Sections for Categories and Trusted By */
+.categories-project-home,
+.trusted-by {
+  margin-bottom: 20px;
+}
+
+/* Styling for Categories Section */
+.category-item {
+  margin: 10px;
+  padding: 20px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  /* Add titles and icons as needed */
+}
+
+/* Styling for Trusted By Section */
+.trusted-by img {
+  margin: 0 10px; /* Adjust spacing between logos */
+}
+
+
+/* ---------------- Admin-panel------------------------- */
+/* استایل کلی */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+/* استایل container */
+.container {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+/* استایل header */
+header {
+    background-color: #333;
+    color: #fff;
+    padding: 10px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.user-info {
+    display: flex;
+    align-items: center;
+}
+
+.user-info img {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    margin-right: 10px;
+}
+
+/* استایل main */
+main {
+    display: flex;
+}
+
+/* استایل sidebar */
+.sidebar {
+    width: 20%;
+    background-color: #f5f5f5;
+    padding: 10px;
+}
+
+.sidebar ul {
+    list-style: none;
+    padding: 0;
+}
+
+.sidebar ul li {
+    margin-bottom: 10px;
+}
+
+.sidebar ul li a {
+    text-decoration: none;
+    color: #333;
+}
+
+.sidebar ul li a:hover {
+    color: #000;
+}
+
+/* استایل content */
+.content {
+    width: 80%;
+    padding: 10px;
+}
+
+.content h2 {
+    font-size: 18px;
+    margin-bottom: 10px;
+}
+
+.content p {
+    margin-bottom: 10px;
+}
+
+.content button {
+    background-color: #000;
+    color: #fff;
+    padding: 10px 20px;
+    border-radius: 5px;
+}
+
+/* استایل های اضافی */
+
+.sidebar ul li a.active {
+    background-color: #ccc;
+    color: #000;
+}
+
+.content h2 {
+    color: #333;
+}
+
+.content p {
+    text-align: justify;
+}
+
+.btn:hover {
+    background-color: #666;
 }

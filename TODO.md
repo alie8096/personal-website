@@ -15,3 +15,5 @@
     - [ ] Add `link` and `image`  of post to create post form and edit post form.
     - [ ] Add feature for change profile image to `admin_profile` route.
     - [ ] Add feature for links of social for show in the `home`.
+    - [ ] Add feature for like Posts.
+    - [ ] Get last posts and sorting by time.
