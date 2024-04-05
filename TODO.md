@@ -17,3 +17,7 @@
     - [ ] Add feature for links of social for show in the `home`.
     - [ ] Add feature for like Posts.
     - [ ] Get last posts and sorting by time.
+
+## JS
+
+    - [ ] To show logo website in the search results

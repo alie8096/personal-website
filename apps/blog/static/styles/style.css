@@ -20,6 +20,9 @@ body {
     background-color: #1d1d1d;
     align-items: center;
     justify-content: center;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
 }
 
 a {
@@ -161,7 +164,8 @@ header {
 
 /* استایل main */
 main {
-    display: flex;
+    /* display: flex; */
+    flex-grow: 1;
 }
 
 /* استایل sidebar */
@@ -229,3 +233,256 @@ main {
 .btn:hover {
     background-color: #666;
 }
+
+
+/* ------------ Login Page --------------------- */
+
+.login {
+    display: flex;
+    align-items: center;
+    justify-content: center; 
+    flex-direction: column;
+    position: relative;
+    background-image: linear-gradient(to right, rgba(255, 255, 255, 0.8));
+}
+
+.login h1 {
+    margin: 20px;
+}
+
+.login:before, .login:after, .login .small-circle,
+.login-card:before, .login-card:after, .login-card .small-circle {
+    content: "";
+    position: absolute;
+    border-radius: 50%;
+    z-index: -1;
+}
+
+.login:before {
+    top: 20px;
+    left: 54%;
+    width: 150px;
+    height: 150px;
+    background-image: radial-gradient(circle at center, rgba(239, 113, 243, 0.8), rgba(239, 113, 243, 0.3));
+    animation: moveCircle 8s linear infinite alternate;
+}
+
+.login:after {
+    bottom: -110px;
+    right: 55%;
+    width: 160px;
+    height: 160px;
+    background-image: radial-gradient(circle at center, rgba(255, 255, 255, 0.7), rgba(255, 255, 255, 0.3));
+    animation: moveCircle 9s linear infinite alternate;
+}
+
+.login-card:before {
+    top: 100px;
+    left: 85%;
+    width: 100px;
+    height: 100px;
+    background-image: radial-gradient(circle at center, rgba(177, 247, 200, 0.849), rgba(204, 255, 190, 0.685));
+    animation: moveCircle 8s linear infinite alternate;
+}
+
+.login-card:after {
+    bottom: -110px;
+    right: 55%;
+    width: 88px;
+    height: 88px;
+    background-image: linear-gradient(to right, rgba(12, 252, 252, 0.7), rgba(111, 0, 255, 0.6));
+    animation: moveCircle 9s linear infinite alternate;
+}
+
+.login .small-circle, .login-card .small-circle {
+    width: 50px;
+    height: 50px;
+    background-image: radial-gradient(circle at center, rgba(105, 128, 255, 0.8),rgba(60, 89, 253, 0.4));
+}
+
+.login .small-circle:nth-child(1) {
+    top: 80px;
+    left: 50%;
+    animation: scaleCircle 8s linear infinite alternate;
+}
+
+.login .small-circle:nth-child(2) {
+    bottom: 120px;
+    right: 30%;
+    animation: rotateCircle 9s linear infinite alternate;
+}
+
+.login-card .small-circle:nth-child(1) {
+    top: 80px;
+    left: 35%;
+    animation: scaleCircle 8s linear infinite alternate;
+}
+
+.login-card .small-circle:nth-child(2) {
+    bottom: 120px;
+    right: 30%;
+    animation: fadeCircle 9s linear infinite alternate;
+}
+
+@keyframes moveCircle {
+    0% {
+        transform: translate(0, 0);
+    }
+    100% {
+        transform: translate(10px, 10px);
+    }
+}
+
+@keyframes scaleCircle {
+    0% {
+        transform: scale(1);
+    }
+    100% {
+        transform: scale(1.5);
+    }
+}
+
+@keyframes rotateCircle {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+@keyframes fadeCircle {
+    0% {
+        opacity: 1;
+    }
+    100% {
+        opacity: 0;
+    }
+}
+
+.login-card {
+    position: relative;
+    width: 352px;
+    min-height: 40vh;
+    height: auto;
+    border: 1px #ffffff;
+    border-radius: 15px;
+    background-image: linear-gradient(to right, rgba(255, 255, 255, 0.8));
+    backdrop-filter: blur(10px);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    flex-direction: column;
+    padding: 20px 50px;
+}
+
+
+.login-card form {
+    width: 100%;
+}
+
+.login-card .form-control {
+    width: calc(100% - 40px);
+    margin-bottom: 15px;
+    padding: 10px;
+    border-radius: 15px;
+    border: none;
+    background-color: rgba(255, 255, 255, 0.8);
+}
+
+.login-card input[type="checkbox"] {
+    margin-top: 15px;
+}
+
+.remember-me {
+    display: flex;
+    align-items: center;
+    margin: 15px;
+}
+
+.remember-me input[type="checkbox"] {
+    margin: 0;
+    width: 20px;
+    height: 20px;
+    appearance: none;
+    border: 1px solid #ddd;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: all 0.2s ease-in-out;
+}
+
+.remember-me input[type="checkbox"]:checked {
+    background-color: #764bd4;
+    border-color: #764bd4;
+}
+
+.remember-me label {
+    margin-left: 10px;
+    font-size: 14px;
+    color: #777;
+    user-select: none;
+}
+
+.remember-me button {
+    margin-left: 10px;
+    padding: 0 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    background-color: #fff;
+    font-size: 14px;
+    color: #777;
+    cursor: pointer;
+    transition: all 0.2s ease-in-out;
+}
+
+.remember-me button:hover {
+    background-color: #f7f7f7;
+}
+  
+.login-card button {
+    width: calc(100% - 40px);
+    padding: 10px;
+    border: none;
+    border-radius: 15px;
+    background-color: #764bd4;
+    color: #fff;
+    cursor: pointer;
+    margin: 20px 0;
+}
+
+.login-card button:hover {
+    background-color: #59399c;
+}
+
+
+
+/* ------------------------ Footer ---------------------- */
+
+footer {
+    background-image: linear-gradient(to right, #f79c48, #ffc456, #f79c48);
+    background-size: 65%;
+    animation: gradient 5s infinite;
+    text-align: center;
+    width: 100%;
+    /* align-items: center;
+    justify-content: center; */
+}
+
+@keyframes gradient {
+    0% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+    100% {
+        background-position: 0% 50%;
+    }
+}
+
+footer .copyright-text {
+    /* text-align: center; */
+    margin: 10px 0;
+
+    font-size: 14px;
+    color: #1d1d1d;
+}
+  

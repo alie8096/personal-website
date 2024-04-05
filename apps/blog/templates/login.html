@@ -2,19 +2,28 @@
 
 {% block title %}
 
-ورود
+Login
 
 {% endblock %}
 
+
 {% block content %}
+<div class="login">
+    
+    <h1>Login</h1>
+    
+    <div class="login-card">
+        
+        <form method="post" action="{{ url_for('login') }}">
+            {{ form.hidden_tag() }}
+            <input type="text" name="username" placeholder="username" class="form-control">
+            <input type="password" name="password" placeholder="password" class="form-control">
+            <div class="remember-me">  <input type="checkbox" name="remember_me" placeholder="remember me" class="form-control" id="remember_me" aria-label="remember me">
+                <label for="remember_me" class="remember-me-text">Remember Me</label>
+            </div>
 
-<h1>ورود</h1>
-
-<form method="post" action="{{ url_for('login') }}">
-    {{ form.hidden_tag() }}
-    <input type="text" name="username" placeholder="نام کاربری" class="form-control">
-    <input type="password" name="password" placeholder="رمز عبور" class="form-control">
-    <input type="checkbox" name="remember_me" placeholder="من را به باد آور" class="form-control">
-    <button type="submit" class="btn btn-primary">ورود</button>
-</form>
+            <button type="submit" class="btn btn-primary">Login</button>
+        </form>
+    </div>
+</div>
 {% endblock %}
