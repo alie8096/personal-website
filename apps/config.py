@@ -1,16 +1,27 @@
-from sample import SUPER_USER
+import os
+from dotenv import load_dotenv
 
+load_dotenv()
 
-# Database configuration
-DATABASE_USERNAME = SUPER_USER.username
-DATABASE_PASSWORD = SUPER_USER.password
-DATABASE_HOST = "localhost"  # Change if your database is on a different host
-DATABASE_NAME = "site.db"
-CSRF_ENABLED = True
+class Config:
+    # Database Configuration
+    SQLALCHEMY_DATABASE_URI = os.getenv("DATABASE_URL", "sqlite:///site.db")
+    SQLALCHEMY_TRACK_MODIFICATIONS = False
 
-# Secret key (replace with a long, random string)
-# SECRET_KEY = 'T{;k#b.%4)V)8|S%E0?7J57z/N+(54~Wc]-zynbFQO43`85-={hV,1ML}_I9;I4'
-SECRET_KEY = 'qwertyuiop{}asdfghjkl:zxcvbnm<>?~!@#$%^&*()_+=-0987654321`][POIUYTREWQASDFGHJKL;"\\ZXCVBNM,./]'
+    # Authentication Configuration
+    DATABASE_USERNAME = os.getenv("DATABASE_USERNAME")
+    DATABASE_PASSWORD = os.getenv("DATABASE_PASSWORD")
+    DATABASE_HOST = os.getenv("DATABASE_HOST", "localhost")
+    DATABASE_NAME = os.getenv("DATABASE_NAME", "site.db")
 
-# Debug mode (set to False for production)
-DEBUG = True
+    # Template Configuration
+    TEMPLATES_FOLDER = os.getenv("TEMPLATES_FOLDER", "templates")
+
+    # Security Configuration
+    CSRF_ENABLED = True
+    SECRET_KEY = os.getenv("SECRET_KEY")
+
+    # Debug Configuration
+    DEBUG = os.getenv("DEBUG", True)
+
+    
