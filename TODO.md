@@ -8,6 +8,12 @@
 
     - [ ] Create `about me` page.
     - [ ] Linking `see more` button to the `about me` page.
+    - [ ] Complete `admin` template.
+    - [ ] Complete `Home` template.
+    - [ ] Complete `posts` template.
+    - [ ] Complete `post` template.
+    - [ ] Complete `create new post` page.
+    - [ ] complete `edit and delete post` page.
 
 ## ROUTES
 
@@ -16,8 +22,13 @@
     - [ ] Add feature for change profile image to `admin_profile` route.
     - [ ] Add feature for links of social for show in the `home`.
     - [ ] Add feature for like Posts.
-    - [ ] Get last posts and sorting by time.
+    - [x] Get last posts and sorting by time.
 
 ## JS
 
-    - [ ] To show logo website in the search results
+    - [x] To show logo website in the search results
+
+## CLEANING & REGULAR CODE
+
+    - [ ] Cleaning code.
+    - [ ] Write test for website.
