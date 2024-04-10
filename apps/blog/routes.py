@@ -139,7 +139,7 @@ def admin_post(id):
 
 
 
-@app.route("/admin/posts", methods=["GET"])
+@app.route("/posts", methods=["GET"])
 @login_required
 @admin_required
 def admin_posts():
@@ -148,7 +148,7 @@ def admin_posts():
     return render_template("admin_posts.html", title="All Posts", posts=posts)
 
 
-@app.route("/admin/posts/new")
+@app.route("/new-post")
 @login_required
 @admin_required
 def admin_posts_new():
@@ -156,7 +156,7 @@ def admin_posts_new():
   return render_template("admin_posts_new.html", form=form, categories=Category.query.all())
 
 
-@app.route("/admin/posts/create", methods=["POST"])
+@app.route("/create", methods=["POST"])
 @login_required
 @admin_required
 def admin_posts_create():
@@ -201,3 +201,7 @@ def admin_profile():
 @app.errorhandler(404)
 def page_not_found(error):
     return render_template("404.html"), 404
+
+@app.route("/about")
+def about_me():
+    return render_template("about_me.html")
