@@ -100,8 +100,41 @@ a:hover {
 }
 
 /* -------------------------- Home/Activity-Topics---------------------------- */
+
+.titre {
+    text-align: center;
+    margin-top: 40px;
+    margin-bottom: 20px;
+    position: relative;
+}
+
+.titre::before {
+    content: "";
+    position: absolute;
+    left: -30px;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.titre::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: -5px;
+    width: 100%;
+    height: 2px;
+    background-color: #764bd4;
+    transform: scaleX(0);
+    transition: transform 0.3s ease;
+}
+
+.titre:hover::after {
+    transform: scaleX(1);
+}
 .container-topics {
     display: flex;
+    align-items: center;
+    justify-content: center;
     border: 1px rgb(136, 136, 136, 0.3);
     border-radius: 15px;
 }
@@ -112,19 +145,93 @@ a:hover {
   margin-bottom: 20px;
 }
 
-/* Styling for Categories Section */
 .category-item {
-  margin: 10px;
-  padding: 20px;
-  border: 1px solid #ddd;
-  border-radius: 5px;
-  /* Add titles and icons as needed */
+    display: flex;
+    align-items: center;
+    margin: 20px;
+    padding: 10px;
+    border-bottom: 2px solid #ddd;
 }
 
-/* Styling for Trusted By Section */
-.trusted-by img {
-  margin: 0 10px; /* Adjust spacing between logos */
+.category-item i {
+    margin-right: 10px;
 }
+
+
+.github-info {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    margin: 20px auto;
+    border: 1px solid #474747;
+    border-radius: 15px;
+}
+
+.card-container {
+    display: flex;
+    flex-direction: row;
+}
+
+.card {
+    flex: 1 1 auto;
+    height: 250px;
+    margin: 10px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+.card img {
+    max-width: 100%;
+    max-height: 100%;
+    border-radius: 10px;
+}
+
+
+.language-github-card {
+    background-color: transparent;
+}
+
+.img-git {
+    height: 218px;
+}
+
+.trusted-by {
+    text-align: center;
+}
+
+.titre {
+    margin-bottom: 20px;
+    font-size: 24px;
+}
+
+.projects {
+    margin: 0 auto;
+    max-width: 600px;
+    padding: 0;
+}
+
+.projects ul {
+    list-style: none;
+    padding: 0;
+}
+
+.projects ul li {
+    margin-bottom: 10px;
+}
+
+.projects ul li a {
+    color: #333;
+    text-decoration: none;
+    font-size: 18px;
+    transition: color 0.3s ease;
+}
+
+.projects ul li a:hover {
+    color: #764bd4;
+}
+
 
 
 /* ---------------- Admin-panel------------------------- */
@@ -265,7 +372,7 @@ main {
     width: 150px;
     height: 150px;
     background-image: radial-gradient(circle at center, rgba(239, 113, 243, 0.8), rgba(239, 113, 243, 0.3));
-    animation: moveCircle 8s linear infinite alternate;
+    animation: moveCircle 7s linear infinite alternate;
 }
 
 .login:after {
@@ -274,7 +381,7 @@ main {
     width: 160px;
     height: 160px;
     background-image: radial-gradient(circle at center, rgba(255, 255, 255, 0.7), rgba(255, 255, 255, 0.3));
-    animation: moveCircle 9s linear infinite alternate;
+    animation: moveCircle 8s linear infinite alternate;
 }
 
 .login-card:before {
@@ -283,7 +390,7 @@ main {
     width: 100px;
     height: 100px;
     background-image: radial-gradient(circle at center, rgba(177, 247, 200, 0.849), rgba(204, 255, 190, 0.685));
-    animation: moveCircle 8s linear infinite alternate;
+    animation: moveCircle 7s linear infinite alternate;
 }
 
 .login-card:after {
@@ -292,7 +399,7 @@ main {
     width: 88px;
     height: 88px;
     background-image: linear-gradient(to right, rgba(12, 252, 252, 0.7), rgba(111, 0, 255, 0.6));
-    animation: moveCircle 9s linear infinite alternate;
+    animation: moveCircle 8s linear infinite alternate;
 }
 
 .login .small-circle, .login-card .small-circle {
@@ -304,25 +411,25 @@ main {
 .login .small-circle:nth-child(1) {
     top: 80px;
     left: 50%;
-    animation: scaleCircle 8s linear infinite alternate;
+    animation: scaleCircle 5s linear infinite alternate;
 }
 
 .login .small-circle:nth-child(2) {
     bottom: 120px;
     right: 30%;
-    animation: rotateCircle 9s linear infinite alternate;
+    animation: rotateCircle 6s linear infinite alternate;
 }
 
 .login-card .small-circle:nth-child(1) {
     top: 80px;
     left: 35%;
-    animation: scaleCircle 8s linear infinite alternate;
+    animation: scaleCircle 5s linear infinite alternate;
 }
 
 .login-card .small-circle:nth-child(2) {
     bottom: 120px;
     right: 30%;
-    animation: fadeCircle 9s linear infinite alternate;
+    animation: fadeCircle 6s linear infinite alternate;
 }
 
 @keyframes moveCircle {
@@ -330,7 +437,7 @@ main {
         transform: translate(0, 0);
     }
     100% {
-        transform: translate(10px, 10px);
+        transform: translate(20px, 20px);
     }
 }
 
@@ -338,14 +445,20 @@ main {
     0% {
         transform: scale(1);
     }
-    100% {
+    50% {
         transform: scale(1.5);
+    }
+    100% {
+        transform: scale(2.5);
     }
 }
 
 @keyframes rotateCircle {
     0% {
         transform: rotate(0deg);
+    }
+    50% {
+        transform: rotate(180deg);
     }
     100% {
         transform: rotate(360deg);
