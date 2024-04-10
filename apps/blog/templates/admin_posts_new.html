@@ -1,59 +1,56 @@
 {% extends "base.html" %}
 
 {% block title %}
-
-ایجاد پست جدید
-
+Create New Post
 {% endblock %}
 
 {% block content %}
+<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css') }}">
 
-<h2>لیست پست ها</h2>
+<h2>Posts List</h2>
 
-<table class="table table-striped">
-  <thead>
-    <tr>
-      <th>عنوان</th>
-      <th>دسته بندی</th>
-      <th>وضعیت</th>
-      <th>تاریخ انتشار</th>
-      <th>ویرایش</th>
-      <th>حذف</th>
-    </tr>
-  </thead>
-  <tbody>
-    {% for post in posts %}
-      <tr>
-        <td>{{ post.title }}</td>
-        <td>{{ post.category.name }}</td>  # Display category name
-        <td>{{ post.status }}</td>
-        <td>{{ post.date_posted }}</td>
-        <!-- <td><a href="{{ url_for('admin_posts', id=post.id, action='delete') }}">حذف</a></td> -->
-        <!-- <td><a href="{{ url_for('admin_posts', id=post.id, action='edit') }}">ویرایش</a></td> -->
-      </tr>
-    {% endfor %}
-  </tbody>
-</table>
+<div class="posts-container">
+  {% for post in posts %}
+  <div class="post-box">
+    <h3>{{ post.title }}</h3>
+    <p>Category: {{ post.category.name }}</p>
+    <p>Status: {{ post.status }}</p>
+    <p>Date Posted: {{ post.date_posted }}</p>
+    <!-- <p><a href="{{ url_for('admin_posts', id=post.id, action='delete') }}">Delete</a></p> -->
+    <!-- <p><a href="{{ url_for('admin_posts', id=post.id, action='edit') }}">Edit</a></p> -->
+  </div>
+  {% endfor %}
+</div>
 
-<h2>ایجاد پست جدید</h2>
+<h2>Create New Post</h2>
 
 <form method="post" action="{{ url_for('admin_posts_create') }}">
-    {{ form.hidden_tag() }}
-    <input type="text" name="title" placeholder="عنوان" class="form-control"><br>
-    <textarea name="content" placeholder="محتوا" class="form-control"></textarea><br>
-    <select name="status" class="form-control">
-        <option value="draft">پیش نویس</option>
-        <option value="archived">بایگانی شد</option>
-        <option value="published">منتشر شده</option>
-        <option value="rejected">رد شده</option>
-        
-    </select><br>
-    <select name="category" class="form-control">
-        {% for category in categories %}
-            <option value="{{ category.id }}">{{ category.name }}</option>
-        {% endfor %}
-    </select><br>
-    <button type="submit" class="btn btn-primary">ایجاد پست</button>
+  {{ form.hidden_tag() }}
+  <div class="form-group">
+    <label for="title">Title:</label>
+    <input type="text" id="title" name="title" class="form-control" placeholder="Enter title">
+  </div>
+  <div class="form-group">
+    <label for="content">Content:</label>
+    <textarea id="content" name="content" class="form-control" placeholder="Enter content"></textarea>
+  </div>
+  <div class="form-group">
+    <label for="status">Status:</label>
+    <select id="status" name="status" class="form-control">
+      <option value="draft">Draft</option>
+      <option value="archived">Archived</option>
+      <option value="published">Published</option>
+      <option value="rejected">Rejected</option>
+    </select>
+  </div>
+  <div class="form-group">
+    <label for="category">Category:</label>
+    <select id="category" name="category" class="form-control">
+      {% for category in categories %}
+      <option value="{{ category.id }}">{{ category.name }}</option>
+      {% endfor %}
+    </select>
+  </div>
+  <button type="submit" class="btn btn-primary">Create Post</button>
 </form>
-
 {% endblock %}
