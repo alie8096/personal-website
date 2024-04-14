@@ -3,16 +3,20 @@ from blog.forms import EditNewPostForm, LoginForm, EditProfileForm, CreatePostFo
 from flask import render_template, url_for, flash, redirect, request
 from blog.models import Post, User
 from blog.models import Category
-from sample import SUPER_USER
+from dotenv import load_dotenv
 from functools import wraps
 from blog import app, db
+import os
 
+
+
+load_dotenv()
 
 def create_user():
-    email = SUPER_USER.email
-    password = SUPER_USER.password
-    username = SUPER_USER.username
-    is_admin = SUPER_USER.is_admin
+    email = os.getenv("DATABASE_EMAIL")
+    password = os.getenv("DATABASE_PASSWORD")
+    username = os.getenv("DATABASE_USERNAME")
+    is_admin = os.getenv("DATABASE_IS_ADMIN")
 
     existing_user = User.query.filter_by(email=email).first()
     

@@ -1,7 +1,5 @@
 from werkzeug.security import generate_password_hash, check_password_hash
-# from .utils import generate_secure_token 
 from flask_login import UserMixin
-from sample import SUPER_USER
 from datetime import datetime
 from blog import db
 
