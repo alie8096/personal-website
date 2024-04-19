@@ -7,8 +7,6 @@ Create New Post
 {% block content %}
 <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css') }}">
 
-<h2>Posts List</h2>
-
 <div class="posts-container">
   {% for post in posts %}
   <div class="post-box">
@@ -50,6 +48,10 @@ Create New Post
       <option value="{{ category.id }}">{{ category.name }}</option>
       {% endfor %}
     </select>
+  </div>
+  <div class="form-group">
+    <label for="link_image">Link Image:</label>
+    <input type="text" id="link_image" name="link_image" class="form-control" placeholder="Enter image link">
   </div>
   <button type="submit" class="btn btn-primary">Create Post</button>
 </form>

@@ -12,6 +12,7 @@ class Post(db.Model):
     author = db.Column(db.Integer, db.ForeignKey("user.id"))
     status = db.Column(db.String(20))
     category_id = db.Column(db.Integer, db.ForeignKey('category.id'))
+    link_image = db.Column(db.String(255), nullable=True)
     
     def __repr__(self):
         return f"{self.__class__.__name__}('{self.title}', '{self.date_posted}')"

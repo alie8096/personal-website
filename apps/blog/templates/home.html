@@ -67,7 +67,7 @@ Home
             <div class="projects-home">
                 {% for post in posts %}
                     <div class="project">
-                        <img src="{{ post.link }}" alt="post.title" class="featuring-image">
+                        <img src="{{ post.link_image }}" alt="post.title" class="featuring-image">
                         <h4>
                             <a href="{{ url_for('post', id=post.id) }}">{{ post.title }}</a>
                         </h4>

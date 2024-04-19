@@ -20,6 +20,7 @@ class CreatePostForm(FlaskForm):
     status = SelectField("status", choices=[("draft", "Draft"), ("published", "Published"), ("archived", "Archived"), ("rejected", "Rejected")], validators=[DataRequired()])
     create_at = DateField("Create At", format=r"%Y-%m-%d", default=datetime.today, validators=[DataRequired()])
     category = SelectField("Category", choices=[], validators=[DataRequired()])
+    link_image = StringField("Link Image", validators=[DataRequired()])
     submit = SubmitField("Create")
     
     def __init__(self, *args, **kwargs):
@@ -33,6 +34,7 @@ class EditNewPostForm(FlaskForm):
     status = SelectField("Status", choices=[("draft", "Draft"), ("published", "Published"), ("archived", "Archived"), ("rejected", "Rejected")], validators=[DataRequired()])
     create_at = DateField("Create At", format=r"%Y-%m-%d", default=datetime.today, validators=[DataRequired()])
     category = QuerySelectField("Category", query_factory=lambda: Category.query.all(), get_label="name", allow_blank=True)
+    link_image = StringField("Link Image", validators=[DataRequired()])
     submit = SubmitField("Create Post")
 
 
@@ -45,6 +47,7 @@ class EditPostForm(EditNewPostForm):
         self.content.data = post.content
         self.status.data = post.status
         self.category.data = post.category.id
+        self.link_image = post.link_image
 
 
 
