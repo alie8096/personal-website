@@ -199,8 +199,8 @@ a:hover {
 }
 
 .card img {
-    width: 98%;
-    height: 98%; /* Adjust image height relative to card height */
+    width: 96%;
+    height: 96%; /* Adjust image height relative to card height */
     object-fit: cover; /* Maintain aspect ratio and cover container */
     border-radius: 10px;
     transition: transform 0.3s ease; /* Hover transition for image */
@@ -273,7 +273,6 @@ a:hover {
     transform: scale(1.02); /* Subtle zoom for image on hover */
 }
 
-  
 
 /* ---------------- Admin-panel------------------------- */
 /* استایل کلی */
@@ -766,6 +765,7 @@ footer {
     background-size: 65%;
     animation: gradient 5s infinite;
     text-align: center;
+    margin-top: 30px;
     width: 100%;
     /* align-items: center;
     justify-content: center; */
