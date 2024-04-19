@@ -1,33 +1,34 @@
 {% extends "base.html" %}
 {% block content %}
   <h1>All Posts</h1>
-  <table class="table">
-    <thead>
-      <tr>
-        <th>Title</th>
-        <th>Date Posted</th>
-        <th>Author</th>
-        <th>Status</th>
-        <th>Actions</th>
-      </tr>
-    </thead>
-    <tbody>
-      {% for post in posts %}
+  <div class="table-responsive">
+    <table class="table table-bordered table-striped">
+      <thead class="thead-dark">
         <tr>
-          <td>{{ post.title }}</td>
-          <td>{{ post.date_posted.strftime("%Y-%m-%d %H:%M:%S") }}</td>
-          <td>{{ post.author.username }}</td>
-          <td>{{ post.status }}</td>
-          <td>
-            <a href="{{ url_for('admin_post', id=post.id) }}" class="btn btn-primary">Edit</a>
-            <form method="POST" action="{{ url_for('admin_post', id=post.id) }}" style="display:inline;">
-              <input type="hidden" name="_method" value="DELETE">
-              <button type="submit" class="btn btn-danger">Delete</button>
-            </form>
-          </td>
+          <th>Title</th>
+          <th>Date Posted</th>
+          <th>Author</th>
+          <th>Status</th>
+          <th>Actions</th>
         </tr>
-      {% endfor %}
-    </tbody>
-  </table>
+      </thead>
+      <tbody>
+        {% for post in posts %}
+          <tr>
+            <td>{{ post.title }}</td>
+            <td>{{ post.date_posted.strftime("%Y-%m-%d %H:%M:%S") }}</td>
+            <td>{{ post.author }}</td>
+            <td>{{ post.status }}</td>
+            <td>
+              <a href="{{ url_for('admin_post', id=post.id) }}" class="btn btn-primary">Edit</a>
+              <form method="POST" action="{{ url_for('admin_post', id=post.id) }}" style="display:inline;">
+                <input type="hidden" name="_method" value="DELETE">
+                <button type="submit" class="btn btn-danger">Delete</button>
+              </form>
+            </td>
+          </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
 {% endblock %}
-

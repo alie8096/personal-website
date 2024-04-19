@@ -110,7 +110,7 @@ def post(id):
     return render_template("post.html", post=post)
 
 
-@app.route("/admin/post/<int:id>", methods=["GET", "POST", "DELETE"])
+@app.route("/admin/post-<int:id>", methods=["GET", "POST", "DELETE"])
 @login_required
 @admin_required
 def admin_post(id):
