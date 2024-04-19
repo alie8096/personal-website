@@ -223,8 +223,8 @@ a:hover {
   }
   
   .featuring-image {
-    width: auto; /* Images span the full project width */
-    height: 150px; /* Adjust image height as needed */
+    width: 300px; /* Images span the full project width */
+    height: 168.75px; /* Adjust image height as needed */
     border-radius: 15px;
     /* object-fit: cover; */
     margin-bottom: 10px; /* Add spacing below image */
@@ -1125,3 +1125,4 @@ footer .copyright-text {
     background-color: #e9ecef;
     border-color: #dee2e6;
   }
+

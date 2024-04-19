@@ -36,7 +36,7 @@ def create_user():
 @app.route("/home")
 def home():
     last_three_posts = Post.query.order_by(Post.date_posted.desc()).limit(3).all()
-    return render_template("home.html", posts=last_three_posts)
+    return render_template("home.html", title="Home" , posts=last_three_posts)
 
 
 login_manager = LoginManager()
@@ -209,3 +209,8 @@ def page_not_found(error):
 @app.route("/about")
 def about_me():
     return render_template("about_me.html")
+
+@app.route("/projects")
+def projects():
+    all_posts = Post.query.filter(Post.date_posted != None).all()
+    return render_template("projects.html", title="Projects", all_posts=all_posts)
