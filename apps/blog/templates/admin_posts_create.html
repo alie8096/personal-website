@@ -1,17 +1,13 @@
 {% extends "base.html" %}
 
 {% block title %}
-
-پست جدید ایجاد شد
-
+New Post Created
 {% endblock %}
 
 {% block content %}
+<h1>New Post Created</h1>
 
-<h1>پست جدید ایجاد شد</h1>
+<p>Your post has been successfully created.</p>
 
-<p>پست شما با موفقیت ایجاد شد.</p>
-
-<a href="{{ url_for('admin_posts') }}">بازگشت به لیست پست ها</a>
-
+<a href="{{ url_for('admin_posts') }}">Back to Post List</a>
 {% endblock %}
