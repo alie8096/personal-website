@@ -766,9 +766,10 @@ footer .copyright-text {
     background-image: linear-gradient(to right, #ff6347, #f79c48, #f79c48, #ff6347);
     animation: gradient 5s infinite;
     background-size: 65%;
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    color: transparent;
 }
+
 
 .error-message {
     display: inline-block;
