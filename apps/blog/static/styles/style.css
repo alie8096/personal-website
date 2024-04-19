@@ -158,9 +158,9 @@ a:hover {
     margin-right: 10px;
 }
 
-
 .github-info {
     display: flex;
+    flex-direction: column; /* Cards stacked vertically */
     justify-content: center;
     align-items: center;
     width: 100%;
@@ -172,26 +172,45 @@ a:hover {
 
 .card-container {
     display: flex;
-    flex-wrap: wrap;
-    justify-content: space-around;
-    align-items: center;
+    flex-wrap: wrap; /* Cards wrap to next row */
+    gap: 15px; /* Adjust spacing between cards */
+    justify-content: center; /* Center cards horizontally */
+    background-color: transparent; /* Remove white background */
+}
+
+.overview-github-card {
+    flex: 1 1 100%; /* Full width for the overview card */
+}
+
+.language-github-card,
+.info-github-card {
+    flex: 1 1 calc(50% - 15px); /* Half width for other cards */
 }
 
 .card {
-    flex: 1 1 200px;
-    height: 250px;
-    margin: 10px;
+    height: auto; /* Adjust height as needed */
+    margin-bottom: 15px; /* Add bottom margin */
+    margin-top: 15px;
     border-radius: 10px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1); /* Subtle drop shadow */
     text-align: center;
     overflow: hidden;
+    transition: all 0.3s ease; /* Hover transition */
 }
 
 .card img {
-    width: 100%;
-    height: 250px;
+    width: 98%;
+    height: 98%; /* Adjust image height relative to card height */
+    object-fit: cover; /* Maintain aspect ratio and cover container */
     border-radius: 10px;
+    transition: transform 0.3s ease; /* Hover transition for image */
 }
+
+.card:hover {
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2); /* Enhanced shadow on hover */
+    transform: scale(1.05); /* Subtle zoom on hover */
+}
+
 
 
 .trusted-by {
@@ -242,6 +261,18 @@ a:hover {
   .project a:hover {
     color: #59399c; /* Change text color on hover */
   }
+
+  /* Hover effect for project cards */
+.project:hover {
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2); /* Enhanced shadow on hover */
+    transform: scale(1.05); /* Subtle zoom on hover */
+}
+
+/* Hover effect for images inside project cards */
+.project:hover .featuring-image {
+    transform: scale(1.02); /* Subtle zoom for image on hover */
+}
+
   
 
 /* ---------------- Admin-panel------------------------- */
