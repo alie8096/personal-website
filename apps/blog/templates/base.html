@@ -10,14 +10,14 @@
 </head>
 <body>
 
-<header>     
-    {% if not current_user.is_authenticated %}
-        {% block navbar %}
+{% if not current_user.is_authenticated %}
+    {% block navbar %}
+        <header>     
             <!-- navbar code -->
-        {% endblock %}
-    {% endif %}
-</header>
-
+        </header>
+        
+    {% endblock %}
+{% endif %}
 <main class="container mt-5">
 {% block content %}
 

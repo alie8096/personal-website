@@ -51,10 +51,10 @@ Home
             <div class="github-info">
                 <div class="card-container">
                     <div class="language-github-card card">
-                        <p><a href="https://github.com/alie8096/github-readme-stats"><img src="https://github-readme-stats.vercel.app/api/top-langs/?username=alie8096&layout=donut" alt="Top Langs" /></a></p>
+                        <img src="https://github-readme-stats.vercel.app/api/top-langs/?username=alie8096&theme=dracula&hide_border=true&include_all_commits=true&count_private=true&layout=compact" alt="Top Languages">
                     </div>
                     <div class="info-github-card card">
-                        <p><a href="https://github.com/alie8096/github-readme-stats#gh-dark-mode-only"><img src="https://github-readme-stats.vercel.app/api?username=alie8096&show_icons=true&theme=dark#gh-dark-mode-only" alt="Anurag's GitHub stats-Dark" class="img-git"/></a></p>
+                        <img src="https://github-readme-stats.vercel.app/api?username=alie8096&theme=dracula&hide_border=true&include_all_commits=true&count_private=true&layout=compact" alt="GitHub Stats">
                     </div>
                 </div>
             </div>
@@ -62,16 +62,23 @@ Home
           </div>
         
 
-        <div class="trusted-by">
+          <div class="trusted-by">
             <h3 class="titre">Last Projects</h3>
-            <div class="projects">
-                <ul>
-                    {% for post in posts %}
-                    <li><a href="{{ url_for('post', id=post.id) }}">{{ post.title }}</a></li>
-                    {% endfor %}
-                </ul>
+            <div class="projects-home">
+                {% for post in posts %}
+                    <div class="project">
+                        <img src="{{ post.link }}" alt="post.title" class="featuring-image">
+                        <h4>
+                            <a href="{{ url_for('post', id=post.id) }}">{{ post.title }}</a>
+                        </h4>
+                    </div>
+                    {% if loop.index0 % 3 == 2 or loop.last %}
+                        </div>
+                        <div class="projects-home"> {% endif %}
+                {% endfor %}
             </div>
         </div>
+        
         
         
     </div>
