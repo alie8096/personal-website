@@ -47,7 +47,7 @@ class EditPostForm(EditNewPostForm):
         self.content.data = post.content
         self.status.data = post.status
         self.category.data = post.category.id
-        self.link_image = post.link_image
+        self.link_image.data = post.link_image
 
 
 

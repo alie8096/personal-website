@@ -171,8 +171,9 @@ def admin_posts_create():
     status = form.status.data
     author = current_user.id
     category_id = form.category.data
+    link_image = form.link_image.data  # Access link_image data
 
-    post = Post(title=title, content=content, status=status, author=author, category_id=category_id)
+    post = Post(title=title, content=content, status=status, author=author, category_id=category_id, link_image=link_image)
     db.session.add(post)
     db.session.commit()
 
@@ -180,6 +181,7 @@ def admin_posts_create():
     return redirect(url_for("admin_posts"))
 
   return render_template("admin_posts_create.html", title="Create Post", form=form, categories=Category.query.all())
+
 
     
 
