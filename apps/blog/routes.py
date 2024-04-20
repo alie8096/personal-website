@@ -204,11 +204,11 @@ def admin_profile():
 
 @app.errorhandler(404)
 def page_not_found(error):
-    return render_template("404.html"), 404
+    return render_template("404.html", title="Page Not Found"), 404
 
 @app.route("/about")
 def about_me():
-    return render_template("about_me.html")
+    return render_template("about_me.html", title="About Me")
 
 @app.route("/projects")
 def projects():
