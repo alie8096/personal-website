@@ -159,13 +159,13 @@ a:hover {
 /* Description content */
 .description-content {
   flex: 1; /* Allow content to take up remaining space */
-  text-align: left; /* Align text to the left */
+  text-align: justify; /* Align text to the left */
   padding: 20px;
 }
 
 /* Profile image */
 .image-profile {
-  flex: 0 0 250px; /* Fixed width for the image section */
+  flex: 0 0 400px; /* Fixed width for the image section */
   display: flex;
   align-items: center; /* Center the image vertically */
   justify-content: flex-end; /* Align the image to the right */
@@ -175,7 +175,7 @@ a:hover {
 .image-profile img {
   max-width: 100%;
   border-radius: 50%; /* Make the image round */
-  max-height: 250px; /* Adjust height as needed */
+  max-height: 300px; /* Adjust height as needed */
   margin-top: 10px;
 }
 
