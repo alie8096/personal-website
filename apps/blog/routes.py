@@ -57,7 +57,7 @@ def login():
         if user and user.check_password(form.password.data):
             login_user(user, remember=form.remember_me.data)
             flash("Login is successfully", "success")
-            return redirect(url_for("admin"))
+            return redirect(url_for("admin_panel"))
         flash("Login failed. Check username and/or password", "error")       
     return render_template("login.html", title="Login", form=form)
 

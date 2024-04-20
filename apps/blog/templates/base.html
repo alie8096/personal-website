@@ -12,11 +12,30 @@
 
 {% if not current_user.is_authenticated %}
     {% block navbar %}
-        <header>     
-            <!-- navbar code -->
-        </header>
-        
+    <!-- <header>      -->
+        <div class="navbar">
+            <div class="navbar-left">
+                <div class="navbar-logo">
+                    <a href="{{ url_for('home') }}">
+                        <img src="../static/images/small-logo.svg" alt="Ali Ebrahimian">
+                    </a>
+                 </div>
+                <ul class="navbar-links">
+                    <li><a href="{{ url_for('about_me') }}">About Me</a></li>
+                    <li><a href="{{ url_for('projects') }}">Projects</a></li>
+                </ul>
+            </div>
+            <div class="navbar-right">
+                {% if user_logged_in %}
+                <a href="{{ url_for('logout') }}" class="btn btn-primary">Logout</a>
+                <a href="{{ url_for('admin_panel') }}" class="btn btn-secondary">Admin Dashboard</a>
+                {% endif %}
+            </div>
+        </div>
+    <!-- </header> -->
     {% endblock %}
+    
+
 {% endif %}
 <main class="container mt-5">
 {% block content %}
