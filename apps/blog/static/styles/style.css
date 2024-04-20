@@ -375,6 +375,7 @@ a:hover {
   width: 300px; /* Images span the full project width */
   height: 168.75px; /* Adjust image height */
   border-radius: 15px;
+  padding: 5px;
   margin-bottom: 10px; /* Add spacing below image */
   transition: transform 0.3s ease-in-out; /* Smooth transition for hover effect */
 }
